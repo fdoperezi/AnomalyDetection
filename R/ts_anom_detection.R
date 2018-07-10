@@ -194,8 +194,8 @@ AnomalyDetectionTs <- function(x, max_anoms = 0.10, direction = 'pos',
   }
 
   # Create empty data frames to store all anoms and seasonal+trend component from decomposition
-  all_anoms <- data.frame(timestamp=numeric(0), count=numeric(0))
-  seasonal_plus_trend <- data.frame(timestamp=numeric(0), count=numeric(0))
+  all_anoms <- data.frame(timestamp=as.POSIXct(character()), count=numeric(0))
+  seasonal_plus_trend <- data.frame(timestamp=as.POSIXct(character()), count=numeric(0))
 
   # Detect anomalies on all data (either entire data in one-pass, or in 2 week blocks if longterm=TRUE)
   for(i in 1:length(all_data)) {
